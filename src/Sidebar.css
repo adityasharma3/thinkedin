@@ -1,0 +1,26 @@
+.sidebar {
+    position:sticky;
+    top: 80px;
+    flex: .2;
+    border-radius: 10px;
+    /* text-align: center; */
+    height: fit-content;
+}
+
+.sidebar__avatar {
+    margin-bottom: 10px;
+}
+
+.sidebar__top {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    flex: 0.2;
+    align-items: center;
+    border: 1px solid lightgrey;
+    border-bottom: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-color: white;
+    padding-bottom: 10px;
+}
