@@ -7,13 +7,13 @@ import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 
-const Post = ({ name, description, message, photoUrl }) => {
+const Post = ({ userName, description, message, photoUrl }) => {
     return (
         <div className="post">
             <div className="post__header">
                 <Avatar />
                 <div className="post__info">
-                    <h2>{name}</h2>
+                    <h2>{userName}</h2>
                     <p>{description}</p>
                 </div>
             </div>

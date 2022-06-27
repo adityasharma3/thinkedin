@@ -7,7 +7,9 @@ import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import Post from './Post';
-import db from './firebase';
+// import { db, postsRef } from './firebaseConfig';
+import { projectFirestore } from './firebaseConfig';
+import { serverTimestamp } from '@firebase/firestore';
 
 const Feed = () => {
 
@@ -15,21 +17,41 @@ const Feed = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        db.collection("posts").onSnapshot((snapshot) => (
-            setPosts(snapshot.docs.map((doc) => ({
-                id: doc.id,
-                data: doc.data(),
-            }))
-            )))
-    }, []);
+        const sub = projectFirestore
+            .collection('posts')
+            .orderBy("timestamp", "asc")
+            .onSnapshot((snap) => {
+
+                let documents = [];
+
+                snap.forEach((doc) => {
+                    documents.push({
+                        ...doc.data(),
+                        id: doc.id
+                    })
+                });
+
+                setPosts(documents);
+            });
+
+        return () => sub();
+
+    }, [projectFirestore]);
 
     const sendPost = (e) => {
         e.preventDefault();
-        // setPosts()
-        db.collection("posts").add({
-            name: 'Aditya SHarma',
-            description: 'This is a firestore vala test',
+        e.stopPropagation();
+
+        setInput('');
+
+        console.log('posts eeet');
+
+        projectFirestore.collection('posts').add({
+            userName: "Aditya Sharma",
+            description: 'yo nigz',
             message: input,
+            photoUrl: '',
+            timestamp: serverTimestamp(),
         })
     };
 
@@ -39,9 +61,9 @@ const Feed = () => {
                 <div className="feed__input">
                     <CreateIcon />
 
-                    <form action="">
+                    <form onSubmit={sendPost}>
                         <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
-                        <button onClick={sendPost} type="submit">Send</button>
+                        <button type="submit">Send</button>
                     </form>
                 </div>
 
@@ -55,7 +77,13 @@ const Feed = () => {
             </div>
 
             {posts.map((post) => (
-                <Post />
+                <Post
+                    key={Math.random()}
+                    userName={post.userName}
+                    description={post.description}
+                    message={post.message}
+                    photoUrl={post.photoUrl}
+                />
             ))}
 
             <Post name="Aditya Sharma" description="test" message="WOW this works somehow" />
