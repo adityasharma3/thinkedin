@@ -8,6 +8,8 @@
 .post__header {
     display: flex;
     margin-bottom: 10px;
+    gap: 1rem;
+    align-items: center;
 }
 
 .post__info > p {
@@ -25,6 +27,8 @@
 
 .post__buttons {
     display: flex;
-    /* justify-content: space-evenly; */
+    width: 80%;
+    margin: 5px auto;
+    justify-content: space-evenly;
     gap: 20px;
 }

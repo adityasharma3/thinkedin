@@ -19,7 +19,7 @@ const Feed = () => {
     useEffect(() => {
         const sub = projectFirestore
             .collection('posts')
-            .orderBy("timestamp", "asc")
+            .orderBy("timestamp", "desc")
             .onSnapshot((snap) => {
 
                 let documents = [];
@@ -86,7 +86,7 @@ const Feed = () => {
                 />
             ))}
 
-            <Post name="Aditya Sharma" description="test" message="WOW this works somehow" />
+            {/* <Post name="Aditya Sharma" description="test" message="WOW this works somehow" /> */}
         </div>
     )
 }
