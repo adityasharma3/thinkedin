@@ -7,14 +7,17 @@ import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import Post from './Post';
-// import { db, postsRef } from './firebaseConfig';
 import { projectFirestore } from './firebaseConfig';
 import { serverTimestamp } from '@firebase/firestore';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
 const Feed = () => {
 
     const [input, setInput] = useState('');
     const [posts, setPosts] = useState([]);
+
+    const user = useSelector(selectUser);
 
     useEffect(() => {
         const sub = projectFirestore
@@ -47,10 +50,10 @@ const Feed = () => {
         console.log('posts eeet');
 
         projectFirestore.collection('posts').add({
-            userName: "Aditya Sharma",
-            description: 'yo nigz',
+            userName: user.displayName,
+            description: user.email,
             message: input,
-            photoUrl: '',
+            photoUrl: user.photoUrl || '',
             timestamp: serverTimestamp(),
         })
     };

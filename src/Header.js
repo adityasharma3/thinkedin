@@ -41,7 +41,7 @@ const Header = () => {
                 <HeaderOption title='Messaging' Icon={ChatIcon} />
                 <HeaderOption title='Notifications' Icon={NotificationsIcon} />
                 <HeaderOption
-                    avatar="https://pickaface.net/gallery/avatar/unr_random_160817_0304_2mvqp69.png"
+                    avatar={true}
                     title="Me"
                     onClick={logOutofApp}
                 />

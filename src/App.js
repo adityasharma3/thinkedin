@@ -12,25 +12,35 @@ function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    projectAuth.onAuthStateChanged(userAuth => {
-      if (userAuth) {
-        //user is logged in
-        dispatch(
-          login({
-            email: userAuth.user.email,
-            uid: userAuth.user.uid,
-            displayName: userAuth.user.displayName,
-            profileUrl: userAuth.user.photoURL,
-          }))
-      }
+  // useEffect(() => {
+  //   projectAuth.onAuthStateChanged(userAuth => {
+  //     if (userAuth) {
+  //       //user is logged in
+  //       // dispatch(
+  //       //   login({
+  //       //     email: userAuth.user.email,
+  //       //     uid: userAuth.user.uid,
+  //       //     displayName: userAuth.user.displayName,
+  //       //     profileUrl: userAuth.user.photoURL,
+  //       //   }))
 
-      else {
-        // user is logged out
-        dispatch(logout());
-      }
-    });
-  });
+  //       dispatch(
+  //         login({
+  //           email: userAuth.email,
+  //           uid: userAuth.uid,
+  //           displayName: userAuth.displayName,
+  //           profileUrl: userAuth.photoURL,
+  //         }))
+
+  //       console.log(userAuth);
+  //     }
+
+  //     else {
+  //       // user is logged out
+  //       dispatch(logout());
+  //     }
+  //   });
+  // });
 
   return (
     <div className="app">
