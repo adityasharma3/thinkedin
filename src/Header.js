@@ -22,13 +22,10 @@ const Header = () => {
 
     return (
         <div className='header'>
-            {/* <p>This is the header</p> */}
-
             <div className="header__left">
                 <img src="" alt="" />
 
                 <div className="header__search">
-                    {/* <h1>💡</h1> */}
                     <img src="https://image.similarpng.com/very-thumbnail/2020/07/Linkedin-logo-on-transparent-Background-PNG-.png" alt='thinkedin-logo' className="logo" />
                     <SearchIcon />
                     <input type="text" />

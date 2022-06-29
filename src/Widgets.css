@@ -1,0 +1,33 @@
+.widgets {
+    /* display: flex; */
+    flex: 0.2;
+    /* background-color: black; */
+    position: sticky;
+    top: 80px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    height: fit-content;
+    padding-bottom: 10px;
+}
+
+.widgets__header{ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;  
+}
+
+.widgets__article { 
+    margin: 0.5rem 1rem;
+    display: flex;
+    justify-content: left;
+    gap:.5rem;
+    border-bottom: 1px solid lightgrey;
+}
+
+/* .article__Right {
+    
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+} */

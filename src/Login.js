@@ -88,6 +88,7 @@ const Login = () => {
                     placeholder='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    autoComplete="on"
                 />
 
                 <button type='submit' onClick={loginToApp}>Sign In</button>
