@@ -24,7 +24,7 @@ const SideBar = () => {
                 {
                     user.photoUrl ?
                         (<Avatar className='sidebar__avatar'>{user.photoUrl}</Avatar>) :
-                        (<Avatar className="sidebar__avatar" >{user.email[0]}</Avatar>)
+                        (<Avatar className="sidebar__avatar" >{user.displayName[0]}</Avatar>)
                 }
                 <h2>{user.displayName}</h2>
                 <h4>{user.email}</h4>
